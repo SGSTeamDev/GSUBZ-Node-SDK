@@ -2,28 +2,46 @@
 
 <!--- FIXME: chnage below to name of your project! --->
 
-# `opensource-starter`
+# `GSUBZ v3 NodeJS SDK`
 
 <!--- FIXME: Write short catchy description/tagline of project --->
 
-**Template for creating new open source repositories that follow Special Man Global Solution LTD open source guidelines**
+## Introduction
+
+This SDK provides a simple and efficient access to the GSUBZ API, allowing you to check balances, retrieve service plans, make payments, and verify transactions. This guide will walk you through the installation, setup, and usage of the package to help you integrate it seamlessly into your application.
 
 </div>
 
-## TEMPLATE INSTRUCTIONS
+## Table of Content
 
-1. Create a new repository using this template.
-2. **Title:** Change the first line of this README to the name of your project.
-3. **Issue & PR Templates**: Review the files in [ISSUE_TEMPLATE](.github/ISSUE_TEMPLATE/) and [PULL_REQUEST_TEMPLATE](.github/PULL_REQUEST_TEMPLATE.md). Adapt them
-   to suit your needs, removing or re-wording any sections that don't make sense for your use case.
-4. **CHANGELOG.md:**
+1. [Requirements](#requirements)
+2. [Installation](#installation)
+3. [Setup](#setup)
+4. [Usage](#usage)
+5. [Contributing](#contributing)
+6. [License](#license)
 
-   - Keep Unreleased section at the top to track upcoming changes.
-   - At release time, move the Unreleased section changes into a new release version section.
-   - Keep to the format and use semantic version for logs.
-   - New change logs should come first after the Unrealeased section (see example).
+## Requirements
 
-5. **Cleanup:** Remove this section of the README and any unused files from the repo.
+- GSUBZ API Key.
+- Node JS v18 or higher.
+
+## Installation
+
+```sh
+npm install @specialman/gsubz
+```
+
+## Setup
+
+```javascript
+let gsubz = require("@specialman/gsubz");
+gsubz = gsubz("your_api_key");
+```
+
+# Usage
+
+[Usage Guide](documentation/usage.md)
 
 ## Contributing
 

@@ -9,14 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - Release Date
 
-<!-- ## [version] - Date -->
+<!-- ## [Version] - Date -->
 <!-- At release time, move the Unreleased section changes into a new release version section. -->
 
-<!-- ## [version] - CHANGE LOG DATE -->
+## [1.0.0] - 2025-02-22
 
 ### Added
 
-- New features go here in a bullet list
+- Get Balance
+- Get Plans
+- Get Service Details
+- Payment
+- Verify Payment
+- Update README.md
+- Update documentation
 
 ### Changed
 

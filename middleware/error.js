@@ -1,18 +1,21 @@
 const { sendResponse } = require("../utils/helpers");
 
 class AppError extends Error {
-  constructor(status_code, message, data = undefined) {
-    super(message);
+  constructor(code, status, description, data) {
+    super(description);
+    this.status = status;
+    this.code = code;
+    this.description = description;
     this.data = data;
-    this.status_code = status_code;
   }
 }
 
 const handleError = (err) => {
   return sendResponse(
-    err.status_code || 500,
-    err.message || "Internal server error",
-    err.data
+    err.code || 500,
+    err.description || "API error",
+    err.status,
+    err.data !== undefined ? err.data : undefined
   );
 };
 

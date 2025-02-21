@@ -12,65 +12,49 @@
 
 const app = require("../app");
 
-describe("Transfer Service", () => {
-  let transferInstance;
-
+describe("API Service Tests", () => {
+  let instance;
   beforeEach(() => {
     // process.env.KEY from env.test
-    transferInstance = app(process.env.KEY).Transfer;
+    instance = app(process.env.API_KEY);
   });
 
-  describe("Create Transfer Recipient", () => {
-    it("should create a transfer recipient and return status as true", async () => {
-      const res = await transferInstance.createTransferReceipient({
-        type: "nuban",
-        name: "Oguntolu Ayobami",
-        account_number: "0164522849",
-        bank_code: "058",
-        currency: "NGN",
-      });
+  test("should fetch balance", async () => {
+    const res = await instance.balance();
 
-      expect(res.status_code).toBe(201);
-      expect(res).toMatchObject({
-        status_code: res.status_code,
-        message: expect.any(String),
-        data: expect.any(Object),
-      });
-    });
-
-    it("should throw error createTransferReceipient fails", async () => {
-      const data = {
-        type: "nuban",
-        name: "Oguntolu Ayobami",
-        currency: "NGN",
-      };
-
-      await expect(
-        transferInstance.createTransferReceipient(data)
-      ).rejects.toThrow();
-
-      await expect(
-        transferInstance.createTransferReceipient(data)
-      ).rejects.toMatchObject({
-        status_code: expect.any(Number),
-        message: expect.any(String),
-      });
-    });
+    expect(res.code).toBe(200);
+    expect(res.data).toHaveProperty("balance");
   });
 
-  describe("List Transfer Recipients", () => {
-    it("should list transfer recipients and return status as true", async () => {
-      const res = await transferInstance.listTransferReceipients({
-        perPage: 10,
-        page: 1,
-      });
+  test("should fetch tv sub plans", async () => {
+    const res = await instance.plans({ service: "gotv" });
 
-      expect(res.status_code).toBe(200);
-      expect(res).toMatchObject({
-        status_code: res.status_code,
-        message: expect.any(String),
-        data: expect.any(Array),
-      });
+    expect(res.code).toBe(200);
+    expect(Array.isArray(res.data.list)).toBe(true);
+  });
+
+  test("should buy data", async () => {
+    const res = await instance.pay({
+      serviceID: "mtn_sme",
+      plan: 179,
+      phone: "+2348168643908",
+      amount: "",
     });
+
+    expect(res.code).toBe(200);
+    expect(res.status).toBe("status", "TRANSACTION_SUCCESSFUL");
+    expect(res.data).toHaveProperty("content");
+  });
+
+  test("should buy airtime", async () => {
+    const res = await instance.pay({
+      serviceID: "mtn",
+      phone: "+2348160381840",
+      amount: 100,
+    });
+
+    expect(res.code).toBe(200);
+    expect(res.status).toBe("status", "TRANSACTION_SUCCESSFUL");
+    expect(res.data).toHaveProperty("content");
   });
 });
