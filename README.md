@@ -2,13 +2,13 @@
 
 <!--- FIXME: chnage below to name of your project! --->
 
-# `GSUBZ v3 NodeJS SDK`
+# `GSUBZ NodeJS SDK`
 
 <!--- FIXME: Write short catchy description/tagline of project --->
 
 ## Introduction
 
-This SDK provides a simple and efficient access to the GSUBZ API, allowing you to check balances, retrieve service plans, make payments, and verify transactions. This guide will walk you through the installation, setup, and usage of the package to help you integrate it seamlessly into your application.
+This SDK provides a simple and efficient access to the GSUBZ API, allowing you to check balance, retrieve service, plans, make payments, and verify payments. This guide will walk you through the installation, setup, and usage of the package to help you integrate it seamlessly into your application.
 
 </div>
 

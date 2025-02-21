@@ -77,7 +77,7 @@ const getService = async () => {
 
 ### 4. Pay
 
-Processes a payment for a service.
+Processes a payment for a service. See [POSTMAN Collection](#postman collection) for detailed payload structures for other services.
 
 ```javascript
 const buyData = async () => {
@@ -122,3 +122,7 @@ const verifyPay = async () => {
   }
 };
 ```
+
+### POSTMAN Collection
+
+https://documenter.getpostman.com/view/16767782/UyxhnnZz
