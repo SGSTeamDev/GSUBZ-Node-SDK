@@ -21,6 +21,7 @@ All API responses follow this structure:
 | 204  | REQUIRED_CONTENT_NOT_SENT                                                                                  |
 | 206  | INVALID_CONTENT                                                                                            |
 | 401  | AUTHORIZATION_FAILED                                                                                       |
+| 400  | FAILED                                                                                                     |
 | 402  | ERROR_IN_PAYMENT                                                                                           |
 | 404  | CONTENT_NOT_FOUND                                                                                          |
 | 405  | REQUEST_METHOD_NOT_IN_POST                                                                                 |

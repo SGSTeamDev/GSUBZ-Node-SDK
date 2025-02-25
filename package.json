@@ -18,7 +18,7 @@
     "url": "git+https://github.com/SGSTeamDev/GSUBZ-Node-SDK.git"
   },
   "author": "Special Man Global Solution LTD",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SGSTeamDev/GSUBZ-Node-SDK/issues"
   },

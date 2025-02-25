@@ -24,25 +24,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update README.md
 - Update documentation
 
-### Changed
+## [1.0.1] - 2025-02-25
 
-- Changes to existing functionality go here in a bullet list
+### Added
 
-### Deprecated
-
-- Mark features soon-to-be removed in a bullet list
-
-### Removed
-
-- Features that have been removed in a bullet list
-
-### Fixed
-
-- Bug fixes in a bullet list
-
-### Security
-
-- Changes/fixes related to security vulnerabilities in a bullet list
+- Update license
+- Update usage documentation
 
 <!-- Example -->
 
