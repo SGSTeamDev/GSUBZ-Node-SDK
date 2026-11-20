@@ -21,7 +21,7 @@ jobs:
           node-version: 22
 
       - name: "Cache npm downloads"
-        uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-v22-${{ hashFiles('**/package-lock.json') }}
