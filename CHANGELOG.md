@@ -7,10 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- Keep Unreleased section at the top to track upcoming changes. -->
 
-## [Unreleased] - Release Date
+## [Unreleased]
 
-<!-- ## [Version] - Date -->
-<!-- At release time, move the Unreleased section changes into a new release version section. -->
+## [1.0.2] - 2026-11-20
+
+### Added
+
+- Repository development guide, versioned Git hooks, repository and release validation scripts.
+- CI change-review workflow and unit test suite.
+- Input validation for `pay` (`serviceID`) and `verifyPay` (`requestID`).
+
+### Changed
+
+- Preserve and redact provider error details while keeping the public response and error shape.
+- Releases are staged for npm maintainer approval instead of published directly from CI.
+- Refreshed the dependency lockfile.
+
+### Fixed
+
+- Error responses now keep `status` and `description` in the correct fields.
+- Transport no longer mutates caller payloads, and `FormData` bodies skip null or undefined values.
+- Missing API keys and request methods now return complete error objects.
+
+### Security
+
+- Bounded and redacted provider diagnostics, including credentials and long numeric identifiers.
+- Cleared known critical and high dependency vulnerabilities.
+
+## [1.0.1] - 2025-02-25
+
+### Added
+
+- Update license
+- Update usage documentation
 
 ## [1.0.0] - 2025-02-22
 
@@ -23,13 +52,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Verify Payment
 - Update README.md
 - Update documentation
-
-## [1.0.1] - 2025-02-25
-
-### Added
-
-- Update license
-- Update usage documentation
 
 <!-- Example -->
 

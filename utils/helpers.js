@@ -1,11 +1,14 @@
 const helpers = {
   sendResponse(code, status, description, data) {
-    return {
+    const response = {
       code,
       status,
       description,
-      data: data ? data : undefined,
     };
+
+    if (data) response.data = data;
+
+    return response;
   },
 };
 

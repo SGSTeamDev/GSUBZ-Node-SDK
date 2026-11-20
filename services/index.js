@@ -1,3 +1,5 @@
+const { AppError } = require("../middleware/error.js");
+
 class Gsubz {
   constructor(request) {
     this.request = request;
@@ -16,10 +18,18 @@ class Gsubz {
   }
 
   async pay(data) {
+    if (!data || !data.serviceID) {
+      throw new AppError(400, "failed", "serviceID is required.");
+    }
+
     return this.request("/pay/", { method: "POST", data });
   }
 
   async verifyPay(data) {
+    if (!data || !data.requestID) {
+      throw new AppError(400, "failed", "requestID is required.");
+    }
+
     return this.request("/verify/", { method: "POST", data });
   }
 }

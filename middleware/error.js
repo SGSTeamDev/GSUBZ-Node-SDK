@@ -13,9 +13,9 @@ class AppError extends Error {
 const handleError = (err) => {
   return sendResponse(
     err.code || 500,
-    err.description || "API error",
-    err.status,
-    err.data !== undefined ? err.data : undefined
+    err.status || "failed",
+    err.description || err.message || "API error",
+    typeof err.data !== "undefined" ? err.data : void 0,
   );
 };
 

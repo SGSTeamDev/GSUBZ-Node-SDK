@@ -29,6 +29,21 @@ All API responses follow this structure:
 | 500  | API_ERROR                                                                                                  |
 | 502  | GATEWAY_ERROR                                                                                              |
 
+## Errors
+
+Failed requests reject with an `AppError` containing the same public fields as a response:
+
+```json
+{
+  "code": 400,
+  "status": "failed",
+  "description": "Description of the failure",
+  "data": { ... } // Optional provider details
+}
+```
+
+The SDK validates required inputs before calling GSUBZ. `pay` requires `serviceID`, `verifyPay` requires `requestID`, and `plans`/`service` require `service`. Provider diagnostics are preserved but bounded and redacted so credentials, tokens, and long identifiers are not exposed in error messages.
+
 ## Available Methods
 
 ### 1. Balance
@@ -78,7 +93,7 @@ const getService = async () => {
 
 ### 4. Pay
 
-Processes a payment for a service. See [POSTMAN Collection](https://documenter.getpostman.com/view/16767782/UyxhnnZz) for detailed payload structures for other services.
+Processes a payment for a service. `serviceID` is required. See [POSTMAN Collection](https://documenter.getpostman.com/view/16767782/UyxhnnZz) for detailed payload structures for other services.
 
 ```javascript
 const buyData = async () => {
@@ -111,7 +126,7 @@ const buyAirtime = async () => {
 
 ### 5. Verify Pay
 
-Verifies the status of a payment.
+Verifies the status of a payment. `requestID` is required.
 
 ```javascript
 const verifyPay = async () => {

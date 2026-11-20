@@ -18,8 +18,9 @@ This SDK provides a simple and efficient access to the GSUBZ API, allowing you t
 2. [Installation](#installation)
 3. [Setup](#setup)
 4. [Usage](#usage)
-5. [Contributing](#contributing)
-6. [License](#license)
+5. [Development](#development)
+6. [Contributing](#contributing)
+7. [License](#license)
 
 ## Requirements
 
@@ -42,6 +43,14 @@ gsubz = gsubz("your_api_key");
 # Usage
 
 [Usage Guide](documentation/usage.md)
+
+## Development
+
+- [Development guide](AGENT.md): repository structure, standards, tests, and release rules.
+- [Contributor guide](CONTRIBUTING.md): how to propose changes and open pull requests.
+- [Changelog](CHANGELOG.md): released and unreleased changes.
+
+Run `npm run setup-hooks` once to enable the versioned local hooks. Run `npm run verify` before pushing.
 
 ## Contributing
 
