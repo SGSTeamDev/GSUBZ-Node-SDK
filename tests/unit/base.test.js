@@ -113,6 +113,20 @@ describe("TRANSPORT VALIDATION", () => {
     ]);
   });
 
+  it("applies a caller-supplied timeout", async () => {
+    axios.mockResolvedValueOnce(
+      response({ code: 200, status: "success", list: [] }),
+    );
+
+    await base("key")("/plans", {
+      method: "GET",
+      query: { service: "gotv" },
+      timeout: 15000,
+    });
+
+    expect(axios.mock.calls[0][0].timeout).toBe(15000);
+  });
+
   it("passes an existing FormData body through unchanged", async () => {
     axios.mockResolvedValueOnce(
       response({ code: 200, status: "TRANSACTION_SUCCESSFUL", description: "ok" }),
@@ -159,6 +173,29 @@ describe("SUCCESS MAPPING", () => {
       code: 200,
       status: "success",
       description: "Service details.",
+    });
+  });
+
+  it("accepts a string success code", async () => {
+    axios.mockResolvedValueOnce(
+      response({
+        code: "200",
+        status: "success",
+        description: "TRANSACTION_SUCCESSFUL",
+        transaction_id: "3574357094",
+      }),
+    );
+
+    await expect(
+      base("key")("/verify/", {
+        method: "POST",
+        data: { requestID: "req-1" },
+      }),
+    ).resolves.toEqual({
+      code: "200",
+      status: "success",
+      description: "TRANSACTION_SUCCESSFUL",
+      data: { transaction_id: "3574357094" },
     });
   });
 
