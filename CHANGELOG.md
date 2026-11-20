@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] - 2026-11-20
+
+### Fixed
+
+- Purchase requests now allow up to 10 minutes; balance, plans, service details, and verification allow 15 seconds.
+- `verifyPay` now accepts `transactionID` as an alternative to `requestID`, matching the GSUBZ status API.
+- Responses with a string success code such as `"200"` are now treated as success.
+
 ## [1.0.2] - 2026-11-20
 
 ### Added

@@ -1,6 +1,6 @@
 {
   "name": "@specialman/gsubz",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Node JS library for GSUBZ APIs",
   "main": "app.js",
   "directories": {

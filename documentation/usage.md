@@ -42,7 +42,9 @@ Failed requests reject with an `AppError` containing the same public fields as a
 }
 ```
 
-The SDK validates required inputs before calling GSUBZ. `pay` requires `serviceID`, `verifyPay` requires `requestID`, and `plans`/`service` require `service`. Provider diagnostics are preserved but bounded and redacted so credentials, tokens, and long identifiers are not exposed in error messages.
+The SDK validates required inputs before calling GSUBZ. `pay` requires `serviceID`, `verifyPay` requires `requestID` or `transactionID`, and `plans`/`service` require `service`. Provider diagnostics are preserved but bounded and redacted so credentials, tokens, and long identifiers are not exposed in error messages.
+
+Requests use realistic timeouts: purchases (`pay`) allow 10 minutes, while balance, plans, service details, and verification allow 15 seconds.
 
 ## Available Methods
 
@@ -126,12 +128,23 @@ const buyAirtime = async () => {
 
 ### 5. Verify Pay
 
-Verifies the status of a payment. `requestID` is required.
+Verifies the status of a payment. Send the `requestID` you supplied when buying, or the `transactionID` returned by the purchase. You need at least one of them.
 
 ```javascript
 const verifyPay = async () => {
   try {
-    const response = await gsubz.verifyPay({ requestID: "3696898674" });
+    const response = await gsubz.verifyPay({ requestID: "SPY-abc123" });
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+};
+```
+
+```javascript
+const verifyPayByTransactionId = async () => {
+  try {
+    const response = await gsubz.verifyPay({ transactionID: "3574357094" });
     console.log(response);
   } catch (error) {
     console.error(error);
